@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Registro en Seminarios</title>
+</head>
+<body>
+    <h1>Registro en Seminarios</h1>
+    <div class="container">
+        
+        <div class="form-container">
+            <h2>Datos</h2>
+            <form action="{{ url_for('registra') }}" method="POST">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                <br>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <br>
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+                <br>
+                <label for="turno">Turno:</label>
+                <select id="turno" name="turno" required>
+                    <option value="Mañana">Mañana</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Noche">Noche</option>
+                </select>
+        </div>
+
+        <div class="seminario-container">
+            <h2>Seminarios Disponibles</h2>
+            <label><input type="checkbox" name="seminarios" value="Inteligencia Artificial"> Inteligencia Artificial</label><br>
+            <label><input type="checkbox" name="seminarios" value="Machine Learning"> Machine Learning</label><br>
+            <label><input type="checkbox" name="seminarios" value="Simulacion con Arena"> Simulación con Arena</label><br>
+            <label><input type="checkbox" name="seminarios" value="Robotica Educativa"> Robótica Educativa</label>
+        </div>
+        <div class="submit-container">
+            <button type="submit">Enviar Registro</button>
+        </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

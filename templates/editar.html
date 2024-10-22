@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Registro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
+<body>
+    <h1>Editar Registro</h1>
+    <div class="container">
+        
+        <div class="form-container">
+            <h2>Modificar Datos</h2>
+            <form action="{{ url_for('editar', id=registro['id']) }}" method="POST">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" value="{{ registro['fecha'] }}" required><br>
+                <br>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" value="{{ registro['nombre'] }}" required><br>
+                <br>
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" value="{{ registro['apellidos'] }}" required><br>
+                <br>
+                <label for="turno">Turno:</label>
+                <select name="turno" required>
+                <option value="Mañana" {% if registro['turno'] == 'Mañana' %}selected{% endif %}>Mañana</option>
+                <option value="Tarde" {% if registro['turno'] == 'Tarde' %}selected{% endif %}>Tarde</option>
+                <option value="Noche" {% if registro['turno'] == 'Noche' %}selected{% endif %}>Noche</option>
+                </select>
+        </div>
+        
+        <div class="seminario-container">
+            <h2>Modificar Seminarios</h2>
+            <label><input type="checkbox" name="seminarios" value="Inteligencia Artificial" {% if 'Inteligencia Artificial' in registro['seminarios'] %}checked{% endif %}> Inteligencia Artificial</label><br>
+        <label><input type="checkbox" name="seminarios" value="Machine Learning" {% if 'Machine Learning' in registro['seminarios'] %}checked{% endif %}> Machine Learning</label><br>
+        <label><input type="checkbox" name="seminarios" value="Simulacion con Arena" {% if 'Simulacion con Arena' in registro['seminarios'] %}checked{% endif %}> Simulación con Arena</label><br>
+        <label><input type="checkbox" name="seminarios" value="Robotica Educativa" {% if 'Robotica Educativa' in registro['seminarios'] %}checked{% endif %}> Robótica Educativa</label>
+        </div>
+        <div class="submit-container">
+            <button type="submit">Actualizar</button>
+        </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
